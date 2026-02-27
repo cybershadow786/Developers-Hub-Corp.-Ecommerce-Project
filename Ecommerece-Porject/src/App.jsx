@@ -1,16 +1,23 @@
-import './App.css'
-import Header from './Components/layout/Header'
-import Home from './Components/pages/Home'
-function App() {
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./compnents/global/navbar/Navbar.jsx";
+import Footer from "./compnents/global/footer/Footer.jsx";
+import Newsletter from "./compnents/global/Newsletter/Newsletter.jsx";
+import Landing from "./compnents/pages/landing/Landing.jsx";
+import ProductsListing from "./compnents/pages/ProductsListing/ProductsListing.jsx";
 
+function App() {
   return (
-    <>
-      <Header />
-      <div className="body p-4 bg-gray-100 flex flex-col items-center justify-center">
-        <Home />
-      </div>
-    </>
-  )
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/:slug" element={<ProductsListing />} />
+      </Routes>
+      <Newsletter />
+      <Footer />
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
